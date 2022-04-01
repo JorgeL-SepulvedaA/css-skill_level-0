@@ -1,0 +1,53 @@
+.font-simple{
+    font-family: monospace;
+}
+b.aesthetic-tittle{
+    font-family: Courier;
+}
+footer.aesthetic-simple{
+    font-family: 'Lemon Tea';
+    font-size: 18px;
+}
+header.blur-bg{
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/002/414/405/non_2x/abstract-colorful-fun-background-vector.jpg");
+    background-size: 100%;
+    filter: blur(0px);
+}
+footer.blur-bg{
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/002/414/405/non_2x/abstract-colorful-fun-background-vector.jpg");
+    background-size: 100%;
+    filter: blur(0px);
+}
+img.img-style{
+    margin-right: 5px;
+}
+footer{
+    margin-top: auto;
+    flex: auto;
+}
+#carouselExampleIndicators{
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+#index1{
+    width: max-content;
+    height: max-content;
+    margin-bottom: 3%;
+}
+#index2{
+    width: max-content;
+    height: max-content;
+    margin-bottom: 3%;
+}
+#prev-next{
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/002/414/405/non_2x/abstract-colorful-fun-background-vector.jpg");
+    background-size: 100%;
+    filter: blur(0px);
+    width: 50px;
+}

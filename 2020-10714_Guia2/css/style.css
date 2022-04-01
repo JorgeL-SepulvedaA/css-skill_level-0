@@ -1,0 +1,26 @@
+body{
+    background-color: black;
+    color: white;
+}
+header{
+    text-align: center;
+}
+h3{
+    font-style: italic;
+}
+section{
+    font-family: Helvetica;
+    font-size: 12px;
+    text-align: justify;
+}
+footer{
+    text-align: center;
+}
+p{
+    margin-top: 6%;
+}
+b{
+    text-transform: uppercase;
+    font-family: 'Lucida Sans';
+    font-style: oblique;
+}
