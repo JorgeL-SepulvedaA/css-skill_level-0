@@ -1,0 +1,24 @@
+.font-simple{
+    font-family: monospace;
+}
+.aesthetic-tittle{
+    font-family: Courier;
+}
+.aesthetic-simple{
+    font-family: monospace;
+    font-size: 18px;
+}
+img.img-style{
+    margin-right: 5px;
+}
+footer{
+    margin-top: auto;
+    flex: auto;
+}
+#formSpace{
+    background-color: burlywood;
+    border-radius: 3px;
+}
+#buttons{
+    margin-top: 10px;
+}
