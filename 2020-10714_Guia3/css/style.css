@@ -1,19 +1,5 @@
-.font-simple{
-    font-family: monospace;
-}
-.aesthetic-tittle{
-    font-family: Courier;
-}
-.aesthetic-simple{
-    font-family: monospace;
-    font-size: 18px;
-}
-footer{
-    margin-top: auto;
-    flex: auto;
-}
 #formSpace{
-    background-color: burlywood;
+    background-color:coral;
     border-radius: 3px;
 }
 #buttons{
@@ -21,7 +7,42 @@ footer{
 }
 #libroSpace{
     border-radius: 3px;
-    border-color: burlywood;
     border: 10px;
-    border-style: double;
+    border-style:groove;
+    border-color: burlywood;
+    padding: 18px;
+    
+}
+.font-simple{
+    font-style: oblique;
+}
+.aesthetic-tittle{
+    font-family: Courier;
+}
+.aesthetic-simple{
+    font-family: monospace;
+    font-size: 18px;
+    color: white;
+}
+.bginput{
+    background-color: burlywood;
+}
+.otherInput{
+    font-size: 12px;
+}
+.sidesMargin{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+legend.style{
+    margin-top: 15px;
+    border-radius: 3px;
+    font-family: Courier;
+    font-size: 24px;
+    color: burlywood;
+    width: 80%;
+}
+footer{
+    margin-top: auto;
+    flex: auto;
 }
