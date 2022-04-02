@@ -19,3 +19,9 @@ footer{
 #buttons{
     margin-top: 10px;
 }
+#libroSpace{
+    border-radius: 3px;
+    border-color: burlywood;
+    border: 10px;
+    border-style: double;
+}
