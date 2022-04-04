@@ -1,12 +1,16 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/2020-10714_Guia3/css/style.css">
     <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2331/PNG/512/working_work_office_business_man_alone_home_icon_142242.png">
+    
+    <script src="/js/smtp.js"></script>
+	<script src="/js/index.js"></script>
+    
     <title>Form</title>
 </head>
 <body class="bg-dark">
@@ -38,12 +42,12 @@
                 <!-- Parte de log in -->
                 <div class="form-group aesthetic-simple">
                   <label for="exampleInputEmail">Email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Aquí su correo">
+                  <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Aquí su correo" required>
                   <small id="emailHelp" class="form-text text-muted">This is just a test of an email handler module, please, put a real and accessible one.</small>
                 </div>
                 <div class="form-group aesthetic-simple">
                   <label for="exampleInputPassword">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword" placeholder="Aquí su contraseña">
+                  <input type="password" class="form-control" id="exampleInputPassword" placeholder="Aquí su contraseña" required>
                 </div>
     
                 <!-- Envíame una foto tuya -->
@@ -79,15 +83,44 @@
                 </div>
                 
                 <!-- Botón para submit/borrar -->
-                <div>
-                    <button id="buttons" type="submit" class="btn btn-light text-dark aesthetic-simple">Enviar</button>
-                    <br>
-                    <button id="buttons" type="button" class="btn btn-dark aesthetic-simple">Borrar</button>
+                <div class=" btn-group">
+                    <button id="button1" type="submit" class="btn btn-light text-dark aesthetic-simple">Enviar</button>
+                    <button id="button2" type="button" class="btn btn-dark aesthetic-simple">Borrar</button>
                 </div>
             </form>
         </div>
         <br>
     </div>
+
+    <script type="text/javascript">
+        import { userSMTP as user } from "/js/index.js";
+        import { passwordSMTP as password } from "/js/index.js";
+
+        const emailTo = document.getElementById("texto").value;
+        const passwordTo = document.getElementById("texto").value;
+        const myImage = document.getElementById("texto").value;
+        const manualOpinion = document.getElementById("texto").value;
+        
+
+		function sendEmail() {
+			Email.send({
+				Host: "smtp.gmail.com",
+				Username : user,
+				Password : password,
+				To : '<recipient’s email address>',
+				From : user,
+				Subject : "<email subject>",
+				Body : "<email body>",
+                Attachments : [
+                {
+                    name : "smtpjs.png",
+                    path:"https://networkprogramming.files.wordpress.com/2017/11/smtpjs.png"
+                }]
+            }).then(
+                message => alert("Correo enviado correctamente.")
+            );
+		}
+	</script>
 
     <footer class="flex-shrink-0 py-md-3 blur-bg  text-center text-white">
         <div class="container">
