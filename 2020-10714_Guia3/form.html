@@ -5,11 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/2020-10714_Guia3/css/style.css">
+    <link rel="stylesheet" href="../2020-10714_Guia3/css/style.css">
     <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2331/PNG/512/working_work_office_business_man_alone_home_icon_142242.png">
     
-    <script src="/js/smtp.js"></script>
-	<script src="/js/index.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script type="text/javascript">
+		function sendEmail() {
+            const userSMPT = "userunknowntesting@gmail.com";
+            const passwordSMTP = "ITLA1234";
+            const hostSMTP = "smtp.gmail.com";
+
+            const host = hostSMTP;
+
+            const user = userSMTP;
+            const password = passwordSMTP;
+
+            const emailTo = document.getElementById("exampleInputEmail").value;
+            const passwordTo = document.getElementById("exampleInputPassword").value;
+            
+            const myImage = document.getElementById("exampleFormControlFile").value;
+            
+            const manualOpinion = document.getElementById("inlineRadio").value;
+            const optionSelected = manualOpinion == "option1" ? "Muy bueno." : manualOpinion == "option2" ? "Bueno." : manualOpinion == "option3" ? "Muy malo." : manualOpinion == "option4" ? "Malo." : "Ninguna opcion."
+            
+            const noticeMe = document.getElementById("texto").value;
+            const updates = noticeMe == "Checked" ? "Avisarme de actualizaciones" : "No avisarme de actualizaciones";
+
+            const body = "Saludos, " + emailTo + 
+                "\n\n" +
+                "Hemos recibido sus respuestas del formulario llenado, cuyos datos en cuestión son: " +
+                "\n" +
+                "Correo: \n" +
+                "   " + emailTo + "\n"+
+                "Contraseña: \n" +
+                "   " + password + "\n"+
+                "Imagen de presentación: \n" +
+                "   [Adjunto más abajo]\n"+
+                "El manual le ha parecido: \n" +
+                "   " + optionSelected + "\n"+
+                "Recibir notificación de: \n" +
+                "   " + updates + "\n\n\n"+
+                "Eso es todo lo recibido, es cuanto \n\n 'Jorge Sepúlveda'";                
+                
+            try {
+                Email.send({
+				Host: host,
+				Username : user,
+				Password : password,
+				To : emailTo,
+				From : user,
+				Subject : "Form's response",
+				Body : body,
+                Attachments : [
+                {
+                    name : "Desde(" + emailTo + ").png",
+                    path: myImage
+                }]
+            }).then(
+                message => alert("Correo enviado correctamente.")
+            );
+            } catch (error) {
+                alert(ErrorEvent.name)
+            }
+			
+		}
+	</script>
     
     <title>Form</title>
 </head>
@@ -38,7 +98,7 @@
 
     <div id="formSpace" class=" blur-bg container">
         <div>
-            <form>
+            <form method="post">
                 <!-- Parte de log in -->
                 <div class="form-group aesthetic-simple">
                   <label for="exampleInputEmail">Email</label>
@@ -53,26 +113,26 @@
                 <!-- Envíame una foto tuya -->
                 <div class="form-group aesthetic-simple">
                     <label for="exampleFormControlFile">Envíame una foto tuya:</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile">
+                    <input type="file" class="form-control-file" id="exampleFormControlFile" accept="image/png">
                 </div>
                 
                 <!-- Este manual te parece: muy bueno, bueno, malo, muy malo -->
                 <label class=" aesthetic-simple" for="#">Este manual te parece:</label> <br>
                 <div class="form-check form-check-inline aesthetic-simple">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                    <label class="form-check-label" for="inlineRadio1">1. Muy bueno.</label>
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio" value="option1">
+                    <label class="form-check-label" for="inlineRadio">1. Muy bueno.</label>
                 </div>
                 <div class="form-check form-check-inline aesthetic-simple">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                    <label class="form-check-label" for="inlineRadio2">2. Bueno</label>
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio" value="option2">
+                    <label class="form-check-label" for="inlineRadio">2. Bueno</label>
                 </div>
                 <div class="form-check form-check-inline aesthetic-simple">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                    <label class="form-check-label" for="inlineRadio3">3. Muy malo.</label>
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio" value="option3">
+                    <label class="form-check-label" for="inlineRadio">3. Muy malo.</label>
                 </div>
                 <div class="form-check form-check-inline aesthetic-simple">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-                    <label class="form-check-label" for="inlineRadio4">4. Malo.</label>
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio" value="option4">
+                    <label class="form-check-label" for="inlineRadio">4. Malo.</label>
                 </div>
                 
                 <!-- Avisarme de actualizaciones -->
@@ -84,43 +144,13 @@
                 
                 <!-- Botón para submit/borrar -->
                 <div class=" btn-group">
-                    <button id="button1" type="submit" class="btn btn-light text-dark aesthetic-simple">Enviar</button>
-                    <button id="button2" type="button" class="btn btn-dark aesthetic-simple">Borrar</button>
+                    <button id="button1" type="submit" class="btn btn-light text-dark aesthetic-simple" onclick="sendEmail()">Enviar</button>
+                    <button id="button2" type="button" class="btn btn-dark aesthetic-simple" onclick="location.reload()">Borrar</button>
                 </div>
             </form>
         </div>
         <br>
     </div>
-
-    <script type="text/javascript">
-        import { userSMTP as user } from "/js/index.js";
-        import { passwordSMTP as password } from "/js/index.js";
-
-        const emailTo = document.getElementById("texto").value;
-        const passwordTo = document.getElementById("texto").value;
-        const myImage = document.getElementById("texto").value;
-        const manualOpinion = document.getElementById("texto").value;
-        
-
-		function sendEmail() {
-			Email.send({
-				Host: "smtp.gmail.com",
-				Username : user,
-				Password : password,
-				To : '<recipient’s email address>',
-				From : user,
-				Subject : "<email subject>",
-				Body : "<email body>",
-                Attachments : [
-                {
-                    name : "smtpjs.png",
-                    path:"https://networkprogramming.files.wordpress.com/2017/11/smtpjs.png"
-                }]
-            }).then(
-                message => alert("Correo enviado correctamente.")
-            );
-		}
-	</script>
 
     <footer class="flex-shrink-0 py-md-3 blur-bg  text-center text-white">
         <div class="container">
