@@ -9,67 +9,7 @@
     <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/2331/PNG/512/working_work_office_business_man_alone_home_icon_142242.png">
     
     <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script type="text/javascript">
-		function sendEmail() {
-            const userSMPT = "userunknowntesting@gmail.com";
-            const passwordSMTP = "ITLA1234";
-            const hostSMTP = "smtp.gmail.com";
-
-            const host = hostSMTP;
-
-            const user = userSMTP;
-            const password = passwordSMTP;
-
-            const emailTo = document.getElementById("exampleInputEmail").value;
-            const passwordTo = document.getElementById("exampleInputPassword").value;
-            
-            const myImage = document.getElementById("exampleFormControlFile").value;
-            
-            const manualOpinion = document.getElementById("inlineRadio").value;
-            const optionSelected = manualOpinion == "option1" ? "Muy bueno." : manualOpinion == "option2" ? "Bueno." : manualOpinion == "option3" ? "Muy malo." : manualOpinion == "option4" ? "Malo." : "Ninguna opcion."
-            
-            const noticeMe = document.getElementById("texto").value;
-            const updates = noticeMe == "Checked" ? "Avisarme de actualizaciones" : "No avisarme de actualizaciones";
-
-            const body = "Saludos, " + emailTo + 
-                "\n\n" +
-                "Hemos recibido sus respuestas del formulario llenado, cuyos datos en cuestión son: " +
-                "\n" +
-                "Correo: \n" +
-                "   " + emailTo + "\n"+
-                "Contraseña: \n" +
-                "   " + password + "\n"+
-                "Imagen de presentación: \n" +
-                "   [Adjunto más abajo]\n"+
-                "El manual le ha parecido: \n" +
-                "   " + optionSelected + "\n"+
-                "Recibir notificación de: \n" +
-                "   " + updates + "\n\n\n"+
-                "Eso es todo lo recibido, es cuanto \n\n 'Jorge Sepúlveda'";                
-                
-            try {
-                Email.send({
-				Host: host,
-				Username : user,
-				Password : password,
-				To : emailTo,
-				From : user,
-				Subject : "Form's response",
-				Body : body,
-                Attachments : [
-                {
-                    name : "Desde(" + emailTo + ").png",
-                    path: myImage
-                }]
-            }).then(
-                message => alert("Correo enviado correctamente.")
-            );
-            } catch (error) {
-                alert(ErrorEvent.name)
-            }
-			
-		}
-	</script>
+    <script src="../js/index.js"></script>
     
     <title>Form</title>
 </head>
@@ -144,7 +84,7 @@
                 
                 <!-- Botón para submit/borrar -->
                 <div class=" btn-group">
-                    <button id="button1" type="submit" class="btn btn-light text-dark aesthetic-simple" onclick="sendEmail()">Enviar</button>
+                    <button id="button1" type="button" class="btn btn-light text-dark aesthetic-simple" onclick="sendEmail()">Enviar</button>
                     <button id="button2" type="button" class="btn btn-dark aesthetic-simple" onclick="location.reload()">Borrar</button>
                 </div>
             </form>
